@@ -1,0 +1,1 @@
+aws lambda add-permission --function-name "arn:aws:lambda:ap-south-1:789761835556:function:eventLogger:test" --source-arn "arn:aws:execute-api:ap-south-1:789761835556:1lw9uyilw1/*/GET/"resource --principal apigateway.amazonaws.com --statement-id apigateway-access --action lambda:InvokeFunction
