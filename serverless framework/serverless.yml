@@ -1,0 +1,35 @@
+service: pulkit
+
+plugins:
+  - "serverless-offline"
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: ap-south-1
+  memorySize: 256
+  timeout: 10
+  stage: dev
+
+functions:
+  hello:
+    handler: handler.hello
+    memorySize: 128
+    timeout: 3
+    vpc: 
+      securityGroupIds:
+        - sg-0955c038432ca8bab
+      subnetIds:
+        - subnet-01ab4c31928adce62
+        - subnet-0b036fba5bfbc19ca	
+        - subnet-08b84f39305dd6d8a
+
+  add:
+    handler: add.add
+    events:
+      - http:
+          path: math/add
+          method: post
+          cors: true    
